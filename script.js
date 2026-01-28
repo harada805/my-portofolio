@@ -1,4 +1,36 @@
-// ===== MOBILE MENU TOGGLE =====
+// ===== CUSTOM CURSOR =====
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+
+window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+    
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+    
+    cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+});
+
+// Cursor effects on hover
+const interactiveElements = document.querySelectorAll('a, button, .role, .tag, .skill-category, .portfolio-item, .social-card');
+
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursorDot.style.transform = 'scale(2)';
+        cursorOutline.style.transform = 'scale(1.5)';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        cursorDot.style.transform = 'scale(1)';
+        cursorOutline.style.transform = 'scale(1)';
+    });
+});
+
+// ===== MOBILE MENU =====
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -8,7 +40,6 @@ menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -16,7 +47,6 @@ navLinks.forEach(link => {
     });
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('active');
@@ -56,7 +86,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ===== ACTIVE NAV LINK ON SCROLL =====
+// ===== ACTIVE NAV LINK =====
 window.addEventListener('scroll', () => {
     let current = '';
     const sections = document.querySelectorAll('section');
@@ -78,114 +108,196 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -100px 0px'
+// ===== SCROLL REVEAL ANIMATION =====
+const scrollElements = document.querySelectorAll('[data-scroll]');
+
+const elementInView = (el, offset = 100) => {
+    const elementTop = el.getBoundingClientRect().top;
+    return (
+        elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset
+    );
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+const displayScrollElement = (element) => {
+    element.classList.add('visible');
+};
+
+const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+        if (elementInView(el, 100)) {
+            displayScrollElement(el);
         }
     });
-}, observerOptions);
-
-// Observe portfolio items
-document.querySelectorAll('.portfolio-item').forEach(item => {
-    observer.observe(item);
-});
-
-// Observe timeline items
-document.querySelectorAll('.timeline-item').forEach(item => {
-    observer.observe(item);
-});
-
-// Observe visual cards
-document.querySelectorAll('.visual-card').forEach(card => {
-    observer.observe(card);
-});
-
-// ===== PORTFOLIO MODAL =====
-const modal = document.getElementById('portfolioModal');
-const modalClose = document.querySelector('.modal-close');
-
-// Portfolio data - you can customize this
-const portfolioData = [
-    {
-        title: "Website Portfolio 1",
-        year: "2024",
-        category: "Web Development",
-        description: "Deskripsi lengkap tentang proyek website pertama. Jelaskan tantangan yang dihadapi, solusi yang diterapkan, dan hasil yang dicapai. Tambahkan detail tentang proses development dan fitur-fitur utama.",
-        technologies: ["HTML5", "CSS3", "JavaScript"],
-        link: "#"
-    },
-    {
-        title: "Website Portfolio 2",
-        year: "2024",
-        category: "Web Design",
-        description: "Deskripsi lengkap tentang proyek website kedua. Ceritakan tentang konsep desain, workflow yang digunakan, dan bagaimana website ini membantu klien mencapai tujuan mereka.",
-        technologies: ["HTML5", "CSS3", "Responsive Design"],
-        link: "#"
-    },
-    {
-        title: "Website Portfolio 3",
-        year: "2023",
-        category: "Web Development",
-        description: "Deskripsi lengkap tentang proyek website ketiga. Diskusikan tentang teknologi yang digunakan, integrasi yang dilakukan, dan dampak dari website ini terhadap bisnis atau organisasi.",
-        technologies: ["JavaScript", "CSS Animations", "UI/UX Design"],
-        link: "#"
-    }
-];
-
-// Open modal function
-window.openModal = function(index) {
-    const data = portfolioData[index];
-    
-    if (data) {
-        // Update modal content
-        document.querySelector('.modal-title').textContent = data.title;
-        document.querySelector('.modal-meta').innerHTML = `
-            <span class="meta-item">${data.year}</span>
-            <span class="meta-separator">•</span>
-            <span class="meta-item">${data.category}</span>
-        `;
-        document.querySelector('.modal-description p').textContent = data.description;
-        
-        // Update technologies
-        const techList = document.querySelector('.tech-list');
-        techList.innerHTML = data.technologies.map(tech => 
-            `<span class="tech-tag">${tech}</span>`
-        ).join('');
-        
-        document.querySelector('.modal-link').href = data.link;
-    }
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
 };
 
-// Close modal
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
+window.addEventListener('scroll', handleScrollAnimation);
+handleScrollAnimation();
 
-modalClose.addEventListener('click', closeModal);
+// ===== HERO ROLES ROTATION =====
+const roles = document.querySelectorAll('.role');
+let currentRoleIndex = 0;
 
-// Close modal when clicking outside
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
+setInterval(() => {
+    roles[currentRoleIndex].classList.remove('active');
+    currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+    roles[currentRoleIndex].classList.add('active');
+}, 3000);
+
+// Manual role click
+roles.forEach((role, index) => {
+    role.addEventListener('click', () => {
+        roles.forEach(r => r.classList.remove('active'));
+        role.classList.add('active');
+        currentRoleIndex = index;
+    });
 });
 
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
+// ===== STAT COUNTER ANIMATION =====
+const statNumbers = document.querySelectorAll('.stat-number');
+
+const animateCounter = (element) => {
+    const target = parseInt(element.getAttribute('data-count'));
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+};
+
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            entry.target.classList.add('counted');
+            animateCounter(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+statNumbers.forEach(stat => {
+    statObserver.observe(stat);
+});
+
+// ===== SKILL PROGRESS BARS =====
+const skillCategories = document.querySelectorAll('.skill-category');
+
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const progressBars = entry.target.querySelectorAll('.skill-progress');
+            progressBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.setProperty('--progress', progress + '%');
+                setTimeout(() => {
+                    bar.style.width = progress + '%';
+                }, 300);
+            });
+        }
+    });
+}, { threshold: 0.3 });
+
+skillCategories.forEach(category => {
+    skillObserver.observe(category);
+});
+
+// ===== PORTFOLIO LAPTOP TILT EFFECT =====
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+portfolioItems.forEach(item => {
+    item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 30;
+        const rotateY = (centerX - x) / 30;
+        
+        const laptopScreen = item.querySelector('.laptop-screen');
+        if (laptopScreen) {
+            laptopScreen.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        const laptopScreen = item.querySelector('.laptop-screen');
+        if (laptopScreen) {
+            laptopScreen.style.transform = 'rotateX(0) rotateY(0)';
+        }
+    });
+});
+
+// ===== TIMELINE DOT PULSE ANIMATION =====
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const dot = entry.target.querySelector('.timeline-dot');
+            if (dot) {
+                dot.style.animation = 'pulse 0.6s ease-in-out';
+                setTimeout(() => {
+                    dot.style.animation = '';
+                }, 600);
+            }
+        }
+    });
+}, { threshold: 0.5 });
+
+timelineItems.forEach(item => {
+    timelineObserver.observe(item);
+});
+
+// Add pulse animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.8); box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.4), 0 0 30px var(--primary); }
     }
+`;
+document.head.appendChild(style);
+
+// ===== SOCIAL CARDS ANIMATION =====
+const socialCards = document.querySelectorAll('.social-card');
+
+socialCards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+        card.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+    }, index * 100);
+});
+
+// ===== CONTACT ITEM HOVER ANIMATION =====
+const contactItems = document.querySelectorAll('.contact-item');
+
+contactItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        const icon = item.querySelector('.contact-icon');
+        if (icon) {
+            icon.style.transform = 'rotate(360deg) scale(1.1)';
+        }
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        const icon = item.querySelector('.contact-icon');
+        if (icon) {
+            icon.style.transform = 'rotate(0) scale(1)';
+        }
+    });
 });
 
 // ===== CONTENTEDITABLE PLACEHOLDER =====
@@ -205,163 +317,118 @@ editableElements.forEach(element => {
             element.textContent = placeholder;
         }
     });
+    
+    // Prevent drag
+    element.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+    });
 });
 
-// ===== PARALLAX EFFECT FOR SHAPES =====
+// ===== PARALLAX EFFECT =====
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const shapes = document.querySelectorAll('.shape');
     
-    shapes.forEach((shape, index) => {
-        const speed = 0.1 + (index * 0.05);
-        shape.style.transform = `translateY(${scrolled * speed}px)`;
+    // Parallax for particles
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach((particle, index) => {
+        const speed = 0.5 + (index * 0.1);
+        particle.style.transform = `translateY(${scrolled * speed}px)`;
     });
-});
-
-// ===== NUMBER COUNTER ANIMATION =====
-const counters = document.querySelectorAll('.highlight-number');
-
-const animateCounter = (element) => {
-    const target = element.textContent;
-    const number = parseInt(target);
     
-    if (isNaN(number)) return;
-    
-    const duration = 2000;
-    const increment = number / (duration / 16);
-    let current = 0;
-    
-    element.textContent = '0';
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= number) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current) + (target.includes('+') ? '+' : '');
-        }
-    }, 16);
-};
-
-// Observe counters
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-            entry.target.classList.add('counted');
-            animateCounter(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-counters.forEach(counter => {
-    counterObserver.observe(counter);
-});
-
-// ===== TYPING EFFECT FOR HERO ROLES =====
-const roles = document.querySelectorAll('.role');
-let roleIndex = 0;
-
-function typeRole() {
-    if (roleIndex < roles.length) {
-        const role = roles[roleIndex];
-        const text = role.textContent;
-        role.textContent = '';
-        
-        let charIndex = 0;
-        const typeInterval = setInterval(() => {
-            if (charIndex < text.length) {
-                role.textContent += text.charAt(charIndex);
-                charIndex++;
-            } else {
-                clearInterval(typeInterval);
-                roleIndex++;
-                setTimeout(typeRole, 200);
-            }
-        }, 50);
+    // Parallax for hero visual
+    const heroVisual = document.querySelector('.hero-visual');
+    if (heroVisual) {
+        heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
-}
-
-// Start typing effect after page load
-window.addEventListener('load', () => {
-    setTimeout(typeRole, 500);
 });
 
-// ===== SKILL PILL HOVER EFFECT =====
-const skillPills = document.querySelectorAll('.skill-pill');
+// ===== INTERSECTION OBSERVER FOR SKILL ITEMS =====
+const skillItems = document.querySelectorAll('.skill-item');
 
-skillPills.forEach(pill => {
-    pill.addEventListener('mouseenter', () => {
-        pill.style.transform = 'translateY(-2px) scale(1.05)';
+skillItems.forEach((item, index) => {
+    item.style.animationDelay = `${index * 0.1}s`;
+});
+
+// ===== MAGNETIC BUTTON EFFECT =====
+const buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(button => {
+    button.addEventListener('mousemove', (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        button.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
     
-    pill.addEventListener('mouseleave', () => {
-        pill.style.transform = 'translateY(0) scale(1)';
+    button.addEventListener('mouseleave', () => {
+        button.style.transform = 'translate(0, 0)';
     });
 });
 
-// ===== PORTFOLIO ITEM TILT EFFECT =====
-const portfolioItems = document.querySelectorAll('.portfolio-item:not(.add-more)');
+// ===== INTEREST TAGS SHUFFLE ANIMATION =====
+const interestTags = document.querySelectorAll('.interest-tag');
 
-portfolioItems.forEach(item => {
-    item.addEventListener('mousemove', (e) => {
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 30;
-        const rotateY = (centerX - x) / 30;
-        
-        item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+interestTags.forEach((tag, index) => {
+    tag.addEventListener('mouseenter', () => {
+        interestTags.forEach((otherTag, otherIndex) => {
+            if (otherIndex !== index) {
+                otherTag.style.transform = 'scale(0.95)';
+                otherTag.style.opacity = '0.6';
+            }
+        });
     });
     
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    tag.addEventListener('mouseleave', () => {
+        interestTags.forEach(otherTag => {
+            otherTag.style.transform = 'scale(1)';
+            otherTag.style.opacity = '1';
+        });
     });
 });
 
-// ===== TIMELINE MARKER ANIMATION =====
-const timelineMarkers = document.querySelectorAll('.timeline-marker');
+// ===== PORTFOLIO TAGS INTERACTION =====
+const portfolioTags = document.querySelectorAll('.portfolio-tags .tag');
 
-const markerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'pulse 1s ease-in-out';
-        }
+portfolioTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+        tag.style.animation = 'tagPop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        setTimeout(() => {
+            tag.style.animation = '';
+        }, 300);
     });
-}, { threshold: 0.5 });
-
-timelineMarkers.forEach(marker => {
-    markerObserver.observe(marker);
 });
 
-// Add pulse animation to CSS dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes pulse {
+// Add tag pop animation
+const tagStyle = document.createElement('style');
+tagStyle.textContent = `
+    @keyframes tagPop {
         0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.3); box-shadow: 0 0 20px rgba(99, 102, 241, 0.5); }
+        50% { transform: scale(1.2) rotate(5deg); }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(tagStyle);
 
-// ===== FORM INPUT FOCUS EFFECT =====
-const inputs = document.querySelectorAll('.method-value');
+// ===== HERO VISUAL CIRCLES INTERACTION =====
+const visualCircles = document.querySelectorAll('.visual-circle');
 
-inputs.forEach(input => {
-    input.addEventListener('focus', () => {
-        input.parentElement.parentElement.style.transform = 'translateX(10px)';
+visualCircles.forEach((circle, index) => {
+    circle.addEventListener('mouseenter', () => {
+        visualCircles.forEach((otherCircle, otherIndex) => {
+            if (otherIndex !== index) {
+                otherCircle.style.animationPlayState = 'paused';
+            }
+        });
     });
     
-    input.addEventListener('blur', () => {
-        input.parentElement.parentElement.style.transform = 'translateX(0)';
+    circle.addEventListener('mouseleave', () => {
+        visualCircles.forEach(otherCircle => {
+            otherCircle.style.animationPlayState = 'running';
+        });
     });
 });
 
-// ===== SCROLL TO TOP ON LOGO CLICK =====
+// ===== SCROLL TO TOP =====
 const logo = document.querySelector('.nav-logo');
 
 logo.addEventListener('click', (e) => {
@@ -372,49 +439,11 @@ logo.addEventListener('click', (e) => {
     });
 });
 
-// ===== LAZY LOADING EFFECT =====
-const lazyElements = document.querySelectorAll('.portfolio-item, .timeline-item, .visual-card');
-
-const lazyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            lazyObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
-
-lazyElements.forEach(element => {
-    lazyObserver.observe(element);
-});
-
-// ===== PREVENT DEFAULT DRAG ON CONTENTEDITABLE =====
-editableElements.forEach(element => {
-    element.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-    });
-});
-
-// ===== ACCESSIBILITY: KEYBOARD NAVIGATION =====
+// ===== KEYBOARD NAVIGATION =====
 document.addEventListener('keydown', (e) => {
-    // Close mobile menu with Escape
     if (e.key === 'Escape') {
         navMenu.classList.remove('active');
         menuToggle.classList.remove('active');
-    }
-    
-    // Navigate through portfolio items with arrow keys
-    if (modal.classList.contains('active')) {
-        const currentIndex = portfolioData.findIndex(item => 
-            item.title === document.querySelector('.modal-title').textContent
-        );
-        
-        if (e.key === 'ArrowRight' && currentIndex < portfolioData.length - 1) {
-            openModal(currentIndex + 1);
-        } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
-            openModal(currentIndex - 1);
-        }
     }
 });
 
@@ -435,22 +464,43 @@ navMenu.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== SMOOTH REVEAL ON PAGE LOAD =====
+// ===== IMAGE LAZY LOADING ANIMATION =====
+const portfolioImages = document.querySelectorAll('.portfolio-image');
+
+portfolioImages.forEach(img => {
+    img.addEventListener('load', () => {
+        img.style.animation = 'fadeIn 0.5s ease';
+    });
+});
+
+// ===== CONTACT INPUTS ANIMATION =====
+const contactInputs = document.querySelectorAll('.contact-value');
+
+contactInputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        input.parentElement.parentElement.style.transform = 'translateX(15px) scale(1.02)';
+        input.parentElement.parentElement.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)';
+    });
+    
+    input.addEventListener('blur', () => {
+        input.parentElement.parentElement.style.transform = 'translateX(0) scale(1)';
+        input.parentElement.parentElement.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+    });
+});
+
+// ===== PAGE LOAD ANIMATION =====
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
     }, 100);
+    
+    // Trigger initial animations
+    handleScrollAnimation();
 });
 
-// ===== CONSOLE MESSAGE =====
-console.log('%c👋 Halo!', 'font-size: 24px; font-weight: bold; color: #6366f1;');
-console.log('%cTerima kasih telah mengunjungi portfolio saya!', 'font-size: 14px; color: #4a5568;');
-console.log('%cJika Anda tertarik untuk berkolaborasi, jangan ragu untuk menghubungi saya.', 'font-size: 14px; color: #4a5568;');
-
 // ===== PERFORMANCE OPTIMIZATION =====
-// Debounce scroll events
 let scrollTimeout;
 window.addEventListener('scroll', () => {
     if (scrollTimeout) {
@@ -458,8 +508,49 @@ window.addEventListener('scroll', () => {
     }
     
     scrollTimeout = window.requestAnimationFrame(() => {
-        // Scroll-based animations handled here
+        // Scroll optimizations handled here
     });
 }, { passive: true });
 
-console.log('%c✅ Portfolio loaded successfully!', 'font-size: 12px; color: #10b981; font-weight: bold;');
+// ===== EASTER EGG - CONSOLE =====
+console.log('%c👨‍💻 Portfolio Website', 'font-size: 24px; font-weight: bold; color: #6366f1;');
+console.log('%c✨ Terima kasih telah mengunjungi portfolio saya!', 'font-size: 14px; color: #4a5568;');
+console.log('%c📧 Tertarik untuk berkolaborasi? Scroll ke bagian kontak!', 'font-size: 14px; color: #4a5568;');
+console.log('%c🎨 Website ini dibuat dengan HTML, CSS, dan JavaScript', 'font-size: 12px; color: #94a3b8;');
+
+// ===== VIEWPORT HEIGHT FIX FOR MOBILE =====
+const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+
+setVh();
+window.addEventListener('resize', setVh);
+
+// ===== SMOOTH SCROLL REVEAL =====
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const fadeElements = document.querySelectorAll('.skill-category, .portfolio-item, .timeline-item, .stat-card');
+
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+fadeElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    fadeObserver.observe(element);
+});
+
+console.log('%c✅ All animations loaded!', 'font-size: 12px; color: #10b981; font-weight: bold;');
+
