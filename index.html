@@ -10,20 +10,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Floating Shapes Background -->
-    <div class="bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
+    <!-- Cursor Follower -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-initial" contenteditable="true">VIN</span>
+                <span class="logo-initial" contenteditable="true">kevin</span>
             </a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Beranda</a></li>
@@ -44,68 +51,92 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-label">Halo, saya kevin </div>
-            <h1 class="hero-name">
-                <span class="name-wrapper">
-                    <span class="name-text" contenteditable="true">kevin aditya S</span>
-                </span>
-            </h1>
-            <div class="hero-roles">
-                <span class="role">Web Developer</span>
-                <span class="role-separator">×</span>
-                <span class="role">3D Designer</span>
-                <span class="role-separator">×</span>
-                <span class="role">Creative Enthusiast</span>
+            <div class="hero-left">
+                <div class="hero-label">
+                    <span class="label-icon">👋</span>
+                    <span>Halo, saya kevin. saya adalah developer pemula yang sedang belajar dan berkembang. dan saya memiliki minat pada IoT, embedded software, Real-Time Systems, Defense Systems</span>
+                </div>
+                <h1 class="hero-name">
+                    <span class="name-text" contenteditable="true">kevin</span>
+                </h1>
+                <div class="hero-roles">
+                    <span class="role active">Web Developer</span>
+                    <span class="role">3D Designer</span>
+                    <span class="role">Creative Enthusiast</span>
+                </div>
+                <p class="hero-description">
+                    Mengubah ide menjadi pengalaman digital yang menarik. Fokus pada pengembangan web yang fungsional dan desain 3D yang memukau, dengan minat mendalam pada embedded software dan teknologi pertahanan.
+                </p>
+                <div class="hero-cta">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <span>Lihat Karya</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+                </div>
             </div>
-            <p class="hero-description">
-                Mengubah ide menjadi pengalaman digital yang menarik. Fokus pada pengembangan web yang fungsional dan desain 3D yang memukau, dengan minat mendalam pada embedded software dan teknologi pertahanan.
-            </p>
-            <div class="hero-cta">
-                <a href="#portfolio" class="btn btn-primary">Lihat Karya</a>
-                <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+            <div class="hero-right">
+                <div class="hero-visual">
+                    <div class="visual-circle circle-1"></div>
+                    <div class="visual-circle circle-2"></div>
+                    <div class="visual-circle circle-3"></div>
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <div class="card-dot"></div>
+                            <div class="card-dot"></div>
+                            <div class="card-dot"></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-icon">💻</div>
+                            <h3>Developer</h3>
+                            <p>Building digital experiences</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="visual-card card-1">
-                <div class="card-icon">💻</div>
-                <div class="card-label">Web Dev</div>
-            </div>
-            <div class="visual-card card-2">
-                <div class="card-icon">🎨</div>
-                <div class="card-label">3D Design</div>
-            </div>
-            <div class="visual-card card-3">
-                <div class="card-icon">⚡</div>
-                <div class="card-label">Embedded</div>
-            </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-decoration">—</span>
-                Tentang Saya
+            <h2 class="section-title" data-scroll>
+                <span class="title-number">01</span>
+                <span class="title-text">Tentang Saya</span>
             </h2>
             <div class="about-grid">
-                <div class="about-text">
+                <div class="about-text" data-scroll>
                     <p class="lead-text">Saya adalah seorang developer yang passionate dalam menciptakan solusi digital yang tidak hanya fungsional, tapi juga estetis.</p>
                     <p>Perjalanan saya di dunia web development dan 3D design telah membawa saya untuk terus belajar dan berinovasi. Dengan pengalaman di berbagai proyek, saya memahami pentingnya keseimbangan antara kreativitas dan teknologi.</p>
                     <p>Saat ini, saya tertarik untuk mengeksplorasi lebih dalam tentang embedded software dan sistem pertahanan, dengan harapan dapat berkontribusi pada teknologi yang berdampak besar.</p>
                 </div>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <div class="highlight-number">9+</div>
-                        <div class="highlight-label">Bulan Pengalaman</div>
+                <div class="about-stats" data-scroll>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-count="9">0</div>
+                            <div class="stat-label">Bulan Pengalaman</div>
+                        </div>
                     </div>
-                    <div class="highlight-item">
-                        <div class="highlight-number">5</div>
-                        <div class="highlight-label">Teknologi Dikuasai</div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-count="5">0</div>
+                            <div class="stat-label">Teknologi Dikuasai</div>
+                        </div>
                     </div>
-                    <div class="highlight-item">
-                        <div class="highlight-number">2</div>
-                        <div class="highlight-label">Organisasi</div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-count="2">0</div>
+                            <div class="stat-label">Organisasi</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,69 +146,104 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-decoration">—</span>
-                Keahlian & Teknologi
+            <h2 class="section-title" data-scroll>
+                <span class="title-number">02</span>
+                <span class="title-text">Keahlian & Teknologi</span>
             </h2>
-            <div class="skills-container">
-                <div class="skill-group">
-                    <h3 class="skill-group-title">Web Development</h3>
-                    <div class="skill-items">
-                        <div class="skill-pill">
-                            <span class="skill-name">HTML</span>
-                            <span class="skill-badge beginner">Pemula</span>
+            <div class="skills-grid">
+                <div class="skill-category" data-scroll>
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M8 10L20 4L32 10V18C32 26 20 34 20 34C20 34 8 26 8 18V10Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="category-title">Web Development</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">HTML & CSS</span>
+                                <span class="skill-level">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="65"></div>
+                            </div>
                         </div>
-                        <div class="skill-pill">
-                            <span class="skill-name">CSS</span>
-                            <span class="skill-badge beginner">Pemula</span>
-                        </div>
-                        <div class="skill-pill">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-badge beginner">Pemula</span>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">35%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="55"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-group-title">Programming</h3>
-                    <div class="skill-items">
-                        <div class="skill-pill">
-                            <span class="skill-name">C++</span>
-                            <span class="skill-badge beginner">Pemula</span>
-                        </div>
-                        <div class="skill-pill">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-badge beginner">Pemula</span>
+                <div class="skill-category" data-scroll>
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect x="8" y="8" width="24" height="24" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 16L24 24M24 16L16 24" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="category-title">Programming</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">C++</span>
+                                <span class="skill-level">30%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="60"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-group-title">3D Design & Modeling</h3>
-                    <div class="skill-items">
-                        <div class="skill-pill">
-                            <span class="skill-name">Blender</span>
-                            <span class="skill-badge intermediate">Menengah</span>
+                <div class="skill-category" data-scroll>
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 6L6 14V26L20 34L34 26V14L20 6Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M6 14L20 22L34 14M20 34V22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="category-title">3D Design & Modeling</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Blender</span>
+                                <span class="skill-level">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
                         </div>
-                        <div class="skill-pill">
-                            <span class="skill-name">SketchUp</span>
-                            <span class="skill-badge intermediate">Menengah</span>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">SketchUp</span>
+                                <span class="skill-level">68%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="68"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-group-title">Minat & Eksplorasi</h3>
-                    <div class="skill-items">
-                        <div class="skill-pill interest">
-                            <span class="skill-name">Embedded Software</span>
-                        </div>
-                        <div class="skill-pill interest">
-                            <span class="skill-name">Defense Systems</span>
-                        </div>
-                        <div class="skill-pill interest">
-                            <span class="skill-name">IoT Development</span>
-                        </div>
+                <div class="skill-category interest-category" data-scroll>
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20 12V20L26 26" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="category-title">Minat & Eksplorasi</h3>
+                    <div class="interest-tags">
+                        <span class="interest-tag">Embedded Software</span>
+                        <span class="interest-tag">Defense Systems</span>
+                        <span class="interest-tag">IoT Development</span>
+                        <span class="interest-tag">Real-Time Systems</span>
                     </div>
                 </div>
             </div>
@@ -187,163 +253,141 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-decoration">—</span>
-                Portofolio Website
+            <h2 class="section-title" data-scroll>
+                <span class="title-number">03</span>
+                <span class="title-text">Portofolio Website</span>
             </h2>
-            <p class="section-subtitle">Berikut adalah beberapa website yang telah saya kerjakan selama perjalanan sebagai web developer</p>
+            <p class="section-subtitle" data-scroll>Berikut adalah beberapa website yang telah saya kerjakan selama perjalanan sebagai web developer</p>
             
             <div class="portfolio-grid">
                 <!-- Portfolio Item 1 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <div class="placeholder-icon">🌐</div>
-                            <div class="placeholder-text">Screenshot Website</div>
+                <div class="portfolio-item" data-scroll>
+                    <div class="laptop-mockup">
+                        <div class="laptop-screen">
+                            <div class="laptop-camera"></div>
+                            <div class="screen-content">
+                                <img src="img/porto1.png" alt="Website 1" class="portfolio-image">
+                            </div>
                         </div>
-                        <div class="portfolio-overlay">
-                            <button class="portfolio-btn" onclick="openModal(0)">Lihat Detail</button>
-                        </div>
+                        <div class="laptop-bottom"></div>
+                        <div class="laptop-base"></div>
                     </div>
                     <div class="portfolio-info">
-                        <h3 class="portfolio-title" contenteditable="true">Nama Website 1</h3>
-                        <p class="portfolio-desc" contenteditable="true">website penjualan furniture dengan menggunakan html, css, JavaScript</p>
+                        <h3 class="portfolio-title" contenteditable="true">luxewood</h3>
+                        <p class="portfolio-desc" contenteditable="true">website ini adalah sebuah website penjualan furniture kayu berkualitas tinggi dengan desain elegan dan modern. dan saya mendesain nya dengan figma, juga saya menggunakan beberapa bahasa yaitu JavaScript,html,css serta saya juga megintegrasi chatbot untuk memudahkan pelanggan bertanya ke AI kami dan integrasi nya menggunakan api dari gemini</p>
                         <div class="portfolio-tags">
                             <span class="tag" contenteditable="true">HTML</span>
                             <span class="tag" contenteditable="true">CSS</span>
-                            <span class="tag" contenteditable="true">JS</span>
+                            <span class="tag" contenteditable="true">JavaScript</span>
+                            <span class="tag" contenteditable="true">Responsive</span>
                         </div>
+                        <a href="#" class="portfolio-link" contenteditable="true">
+                            <span>Lihat Website<a href="https://luxewood-web.vercel.app/"></a></span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Portfolio Item 2 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <div class="placeholder-icon">💼</div>
-                            <div class="placeholder-text">Screenshot Website</div>
+                <div class="portfolio-item" data-scroll>
+                    <div class="laptop-mockup">
+                        <div class="laptop-screen">
+                            <div class="laptop-camera"></div>
+                            <div class="screen-content">
+                                <img src="img/porto2.png" alt="Website 2" class="portfolio-image">
+                            </div>
                         </div>
-                        <div class="portfolio-overlay">
-                            <button class="portfolio-btn" onclick="openModal(1)">Lihat Detail</button>
-                        </div>
+                        <div class="laptop-bottom"></div>
+                        <div class="laptop-base"></div>
                     </div>
                     <div class="portfolio-info">
-                        <h3 class="portfolio-title" contenteditable="true">Nama Website 2</h3>
-                        <p class="portfolio-desc" contenteditable="true">website penjualan batik dengan menggunakan html, css, JavaScript</p>
+                        <h3 class="portfolio-title" contenteditable="true">batik-nusantara-solo</h3>
+                        <p class="portfolio-desc" contenteditable="true">ini adalah website penjualan batik-nusantara-solo dimana saya juga mendesain nya menggunakan figma, serta saya juga menggunakan beberapa bahasa seperti JavaScript,html,css juga saya gunakan chatbot untuk memudahkan pelanggan bertanya ke AI kami dan integrasi nya menggunakan api dari gemini, juga saya menambahkan fitur generate produk dari JavaScript</p>
                         <div class="portfolio-tags">
                             <span class="tag" contenteditable="true">HTML</span>
                             <span class="tag" contenteditable="true">CSS</span>
+                            <span class="tag" contenteditable="true">JavaScript</span>
+                            <span class="tag" contenteditable="true">Responsive</span>
                         </div>
+                        <a href="#" class="portfolio-link" contenteditable="true">
+                            <span>Lihat Website<a href="https://luxewood-web.vercel.app/"></a></span>
+
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Portfolio Item 3 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <div class="placeholder-icon">🎨</div>
-                            <div class="placeholder-text">Screenshot Website</div>
+                <div class="portfolio-item" data-scroll>
+                    <div class="laptop-mockup">
+                        <div class="laptop-screen">
+                            <div class="laptop-camera"></div>
+                            <div class="screen-content">
+                                <img src="https://via.placeholder.com/1200x800/8b5cf6/ffffff?text=Website+3+Screenshot" alt="Website 3" class="portfolio-image">
+                            </div>
                         </div>
-                        <div class="portfolio-overlay">
-                            <button class="portfolio-btn" onclick="openModal(2)">Lihat Detail</button>
-                        </div>
+                        <div class="laptop-bottom"></div>
+                        <div class="laptop-base"></div>
                     </div>
                     <div class="portfolio-info">
                         <h3 class="portfolio-title" contenteditable="true">Nama Website 3</h3>
-                        <p class="portfolio-desc" contenteditable="true">Deskripsi singkat tentang website ini. Apa yang dibuat dan teknologi yang digunakan.</p>
+                        <p class="portfolio-desc" contenteditable="true">Deskripsi singkat tentang website ini. Jelaskan fitur utama dan teknologi yang digunakan dalam pengembangan.</p>
                         <div class="portfolio-tags">
                             <span class="tag" contenteditable="true">JavaScript</span>
                             <span class="tag" contenteditable="true">Design</span>
+                            <span class="tag" contenteditable="true">Animation</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Add More Button -->
-                <div class="portfolio-item add-more">
-                    <div class="add-more-content">
-                        <div class="add-icon">+</div>
-                        <p>Tambahkan lebih banyak portofolio dengan mengedit HTML</p>
+                        <a href="#" class="portfolio-link" contenteditable="true">
+                            <span></span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Modal -->
-    <div id="portfolioModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <div class="modal-placeholder">
-                        <div class="placeholder-icon">📸</div>
-                        <div class="placeholder-text">Luxewood</div>
-                        <img src="img/porto1.png" alt="Luxewood" class="modal-portofolio">
-                    </div>
-                </div>
-                <div class="modal-info">
-                    <h2 class="modal-title" contenteditable="true">Luxewood</h2>
-                    <div class="modal-meta">
-                        <span class="meta-item" contenteditable="true">2025</span>
-                        <span class="meta-separator">•</span>
-                        <span class="meta-item" contenteditable="true">Web Development</span>
-                    </div>
-                    <div class="modal-description">
-                        <h3>Tentang Proyek</h3>
-                        <p contenteditable="true">Deskripsi lengkap tentang website ini. Jelaskan tantangan yang dihadapi, solusi yang diterapkan, dan hasil yang dicapai. Anda bisa menambahkan lebih banyak detail tentang proses development, fitur-fitur utama, dan teknologi yang digunakan.</p>
-                    </div>
-                    <div class="modal-tech">
-                        <h3>Teknologi</h3>
-                        <div class="tech-list">
-                            <span class="tech-tag" contenteditable="true">HTML5</span>
-                            <span class="tech-tag" contenteditable="true">CSS3</span>
-                            <span class="tech-tag" contenteditable="true">JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="modal-links">
-                        <a href="#" class="modal-link" contenteditable="true">Lihat Website →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Experience Section -->
     <section id="experience" class="experience-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-decoration">—</span>
-                Pengalaman Profesional
+            <h2 class="section-title" data-scroll>
+                <span class="title-number">04</span>
+                <span class="title-text">Pengalaman Profesional</span>
             </h2>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
+                <div class="timeline-item" data-scroll>
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2024</div>
+                        <div class="timeline-badge">2024</div>
                         <h3 class="timeline-title">CV Gading Studio</h3>
-                        <div class="timeline-role">Web Developer & 3D Designer</div>
+                        <div class="timeline-role">3D Designer</div>
                         <div class="timeline-duration">6 Bulan</div>
-                        <p class="timeline-description">Berkontribusi dalam berbagai proyek web development dan 3D design untuk klien. Mengembangkan website responsif, membuat visualisasi 3D, dan berkolaborasi dengan tim dalam menciptakan solusi kreatif yang memenuhi kebutuhan klien.</p>
-                        <div class="timeline-skills">
-                            <span>Web Development</span>
+                        <p class="timeline-desc">Berkontribusi dalam berbagai proyek web development dan 3D design untuk klien. Mengembangkan website responsif, membuat visualisasi 3D, dan berkolaborasi dengan tim dalam menciptakan solusi kreatif yang memenuhi kebutuhan klien.</p>
+                        <div class="timeline-tags">
                             <span>3D Modeling</span>
-                            <span>Client Collaboration</span>
+                            <span>Team Work</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
+                <div class="timeline-item" data-scroll>
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2023</div>
+                        <div class="timeline-badge">2023</div>
                         <h3 class="timeline-title">Universitas Slamet Riyadi</h3>
                         <div class="timeline-role">Magang Web Developer</div>
                         <div class="timeline-duration">3 Bulan</div>
-                        <p class="timeline-description">Program magang yang memberikan foundation kuat dalam web development. Mempelajari best practices dalam coding, struktur project, dan workflow pengembangan website. Mendapatkan pengalaman hands-on dalam membuat website fungsional.</p>
-                        <div class="timeline-skills">
+                        <p class="timeline-desc">Program magang yang memberikan foundation kuat dalam web development. Mempelajari best practices dalam coding, struktur project, dan workflow pengembangan website. Mendapatkan pengalaman hands-on dalam membuat website fungsional.</p>
+                        <div class="timeline-tags">
                             <span>HTML/CSS</span>
                             <span>JavaScript</span>
-                            <span>Project Management</span>
+                            <span>Learning</span>
                         </div>
                     </div>
                 </div>
@@ -354,55 +398,83 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-decoration">—</span>
-                Mari Berkolaborasi
+            <h2 class="section-title" data-scroll>
+                <span class="title-number">05</span>
+                <span class="title-text">Mari Berkolaborasi</span>
             </h2>
             <div class="contact-content">
-                <div class="contact-text">
+                <div class="contact-left" data-scroll>
                     <p class="contact-lead">Saya selalu terbuka untuk diskusi tentang proyek baru, ide kreatif, atau peluang menjadi bagian dari visi Anda.</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">📧</div>
-                            <div class="method-details">
-                                <div class="method-label">Email</div>
-                                <input type="email" class="method-value" placeholder="email@example.com">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 8L10.89 13.26C11.54 13.67 12.46 13.67 13.11 13.26L21 8M5 19H19C20.1 19 21 18.1 21 17V7C21 5.9 20.1 5 19 5H5C3.9 5 3 5.9 3 7V17C3 18.1 3.9 19 5 19Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-label">Email</div>
+                                <input type="email" class="contact-value" placeholder="adityaskevin2@gmail.com">
                             </div>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">📱</div>
-                            <div class="method-details">
-                                <div class="method-label">Telepon</div>
-                                <input type="tel" class="method-value" placeholder="+62 XXX XXXX XXXX">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M22 16.92V19.92C22 20.51 21.53 21 20.94 21C10.4 20.48 2 12.2 2 2C2 1.45 2.45 1 3 1H6C6.55 1 7 1.45 7 2C7 3.25 7.2 4.45 7.57 5.57C7.67 5.92 7.57 6.31 7.29 6.59L5.84 8.04C7.18 10.97 9.62 13.41 12.55 14.75L13.99 13.31C14.28 13.02 14.67 12.93 15.02 13.03C16.14 13.4 17.34 13.6 18.59 13.6C19.14 13.6 19.59 14.05 19.59 14.6V17.6C20.05 17.6 21.49 17.13 22 16.92Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-label">Telepon</div>
+                                <input type="tel" class="contact-value" placeholder="+62 851 4703 5351">
                             </div>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">📍</div>
-                            <div class="method-details">
-                                <div class="method-label">Lokasi</div>
-                                <input type="text" class="method-value" placeholder="Kota, Negara">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-label">Lokasi</div>
+                                <input type="text" class="contact-value" placeholder="surakarta, Indonesia">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-social">
-                    <h3>Temukan Saya Di</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-link" contenteditable="true">
-                            <span class="social-icon">💼</span>
+                <div class="contact-right" data-scroll>
+                    <h3 class="social-title">Temukan Saya Di</h3>
+                    <div class="social-grid">
+                        <a href="https://www.linkedin.com/in/kevin-aditya-s-b75688398/" target="_blank" class="social-card" contenteditable="false">
+                            <div class="social-icon linkedin">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                                </svg>
+                            </div>
                             <span class="social-name">LinkedIn</span>
                         </a>
-                        <a href="#" class="social-link" contenteditable="true">
-                            <span class="social-icon">🐙</span>
+                        <a href="https://github.com/harada805" target="_blank" class="social-card" contenteditable="false">
+                            <div class="social-icon github">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2A10 10 0 0 0 2 12C2 16.42 4.87 20.17 8.84 21.5C9.34 21.58 9.5 21.27 9.5 21C9.5 20.77 9.5 20.14 9.5 19.31C6.73 19.91 6.14 17.97 6.14 17.97C5.68 16.81 5.03 16.5 5.03 16.5C4.12 15.88 5.1 15.9 5.1 15.9C6.1 15.97 6.63 16.93 6.63 16.93C7.5 18.45 8.97 18 9.54 17.76C9.63 17.11 9.89 16.67 10.17 16.42C7.95 16.17 5.62 15.31 5.62 11.5C5.62 10.39 6 9.5 6.65 8.79C6.55 8.54 6.2 7.5 6.75 6.15C6.75 6.15 7.59 5.88 9.5 7.17C10.29 6.95 11.15 6.84 12 6.84C12.85 6.84 13.71 6.95 14.5 7.17C16.41 5.88 17.25 6.15 17.25 6.15C17.8 7.5 17.45 8.54 17.35 8.79C18 9.5 18.38 10.39 18.38 11.5C18.38 15.32 16.04 16.16 13.81 16.41C14.17 16.72 14.5 17.33 14.5 18.26C14.5 19.6 14.5 20.68 14.5 21C14.5 21.27 14.66 21.59 15.17 21.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
+                                </svg>
+                            </div>
                             <span class="social-name">GitHub</span>
                         </a>
-                        <a href="#" class="social-link" contenteditable="true">
-                            <span class="social-icon">🎨</span>
-                            <span class="social-name">Dribbble</span>
-                        </a>
-                        <a href="#" class="social-link" contenteditable="true">
-                            <span class="social-icon">📸</span>
+                        <a href="https://www.instagram.com/dityaa_kevin?igsh=MXE2cTRhanh3MmlxYw==" target="_blank" class="social-card" contenteditable="false">
+                            <div class="social-icon instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2A5.8 5.8 0 0 1 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2M7.6 4A3.6 3.6 0 0 0 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4A3.6 3.6 0 0 0 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5A1.25 1.25 0 0 1 18.5 6.75A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75A1.25 1.25 0 0 1 17.25 5.5M12 7A5 5 0 0 1 17 12A5 5 0 0 1 12 17A5 5 0 0 1 7 12A5 5 0 0 1 12 7M12 9A3 3 0 0 0 9 12A3 3 0 0 0 12 15A3 3 0 0 0 15 12A3 3 0 0 0 12 9Z"/>
+                                </svg>
+                            </div>
                             <span class="social-name">Instagram</span>
+                        </a>
+                        <a href="https://x.com/KevinAdity60740" target="_blank" class="social-card" contenteditable="false">
+                            <div class="social-icon twitter">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10C2.38 10 2.38 10 2.38 10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16 6 17.26 7.89 17.29C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.70 21 8.12 21C16 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z"/>
+                                </svg>
+                            </div>
+                            <span class="social-name">Twitter</span>
                         </a>
                     </div>
                 </div>
@@ -415,10 +487,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-left">
-                    <p>Dibuat dengan <span class="heart">♥</span> oleh <span contenteditable="true">Nama Anda</span></p>
+                    <p>Dibuat dengan <span class="heart">♥</span> oleh <span contenteditable="true">kevin</span></p>
                 </div>
                 <div class="footer-right">
-                    <p>&copy; 2024 • HTML • CSS • JavaScript</p>
+                    <p>&copy; 2026 • HTML • CSS • JavaScript</p>
                 </div>
             </div>
         </div>
